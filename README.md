@@ -67,6 +67,7 @@ Admin only needed for system install (`C:\Program Files\cursor`). User install (
 | 2.7.0-pre.27 | `2.7.0-pre.27.patch.0/`       | Tested ✅ |
 | 2.7.0-pre.18 | `2.7.0-pre.18.patch.0/`       | Tested ✅ |
 | 2.7.0-pre.16 | `2.7.0-pre.16.patch.0/`       | Tested ✅ |
+| 2.6.12       | `2.6.12.patch.0/`              | Tested ✅ |
 | 2.7.0-pre.1  | `2.7.0-pre.1.patch.0/`        | Tested ✅ |
 | 2.6.8        | `2.6.8.patch.0/`              | Tested ✅ |
 | 2.6.0-pre.43 | `2.6.0-pre.43.patch.0/`       | Tested ✅ |
