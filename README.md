@@ -1,124 +1,69 @@
-# Cursor Layout Menu Patcher
+# Cursor Layout Patcher
 
+Stellt das volle **Change Layout**-Menü wieder her (u. a. Agent, Editor, Zen, Browser, Toggles).  
+Patcht `workbench.desktop.main.js` und aktualisiert die Checksums in `product.json` (optional `nls.messages.json`).
 
+## Kurzinfo
 
-<div align="center">
+- **Referenz (altes Menü):** `C:\Program Files\cursor-old` (falls vorhanden).
+- **Aktuelle User-Installation:** typisch `%LOCALAPPDATA%\Programs\cursor`.
 
-[![Windows 10 | 11](https://img.shields.io/badge/Windows_10_%7C_11-0078D6?style=flat&logo=windows&logoColor=white)](https://www.microsoft.com/windows)
-[![Cursor 2.5+ | 2.6 | 2.7](https://img.shields.io/badge/Cursor_2.5%2B_%7C_2.6_%7C_2.7-000000?style=flat&logo=cursor&logoColor=white)](https://cursor.com)
-[![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+**Vor dem Patchen:** Cursor **komplett beenden**, dann im passenden Ordner `run-patcher.bat` ausführen (oder `patcher.ps1` mit PowerShell).
 
-</div>
+---
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/universeitde/cursor-legacyui-patcher/refs/heads/main/assets/patched_2.7.0.png" alt="Patched Change Layout menu: presets (Agent, Editor, Zen, Browser), toggles, Agent Sidebar, Cursor Settings" width="600" />
-</div>
+## Patcher nach Cursor-Version
 
-Patched layout menu
+Sortierung: **neueste Version oben**. Ordner unter `Outdated\` sind archivierte / ältere Patch-Sätze, bleiben aber nutzbar, wenn deine installierte Cursor-Version exakt passt.
 
+| Cursor-Version | Status | Ordner / Patcher |
+|----------------|--------|------------------|
+| **2.7.0-pre.105** | Aktuell | `2.7.0-pre.105.patch.0\` |
+| 2.7.0-pre.87 | Outdated | `Outdated/2.7.0-pre.87.patch.0\` |
+| 2.7.0-pre.84 | Outdated | `Outdated/2.7.0-pre.84.patch.0\` |
+| 2.7.0-pre.78 | Outdated | `Outdated/2.7.0-pre.78.patch.0\` |
+| 2.7.0-pre.73 | Outdated | `Outdated/2.7.0-pre.73.patch.0\` |
+| 2.7.0-pre.67 | Outdated | `Outdated/2.7.0-pre.67.patch.0\` |
+| 2.7.0-pre.63 | Outdated | `Outdated/2.7.0-pre.63.patch.0\` |
+| 2.7.0-pre.61 | Outdated | `Outdated/2.7.0-pre.61.patch.0\` |
+| 2.7.0-pre.60 | Outdated | `Outdated/2.7.0-pre.60.patch.0\` |
+| 2.7.0-pre.59 | Outdated | `Outdated/2.7.0-pre.59.patch.0\` |
+| 2.7.0-pre.55 | Outdated | `Outdated/2.7.0-pre.55.patch.0\` |
+| 2.7.0-pre.53 | Outdated | `Outdated/2.7.0-pre.53.patch.0\` |
+| 2.7.0-pre.45 | Outdated | `Outdated/2.7.0-pre.45.patch.0\` |
+| 2.7.0-pre.43 | Outdated | `Outdated/2.7.0-pre.43.patch.0\` |
+| 2.7.0-pre.41 | Outdated | `Outdated/2.7.0-pre.41.patch.0\` |
+| 2.7.0-pre.35 | Outdated | `Outdated/2.7.0-pre.35.patch.0\` |
+| 2.7.0-pre.31 | Outdated | `Outdated/2.7.0-pre.31.patch.0\` |
+| 2.7.0-pre.27 | Outdated | `Outdated/2.7.0-pre.27.patch.0\` |
+| 2.7.0-pre.18 | Outdated | `Outdated/2.7.0-pre.18.patch.0\` |
+| 2.7.0-pre.17 | Outdated | `Outdated/2.7.0-pre.17.patch.0\` |
+| 2.7.0-pre.16 | Outdated | `Outdated/2.7.0-pre.16.patch.0\` |
+| 2.7.0-pre.1 | Outdated | `Outdated/2.7.0-pre.1.patch.0\` |
+| **2.6.19** | Aktuell | `2.6.19.patch.0\` |
+| **2.6.18** | Aktuell | `2.6.18.patch.0\` |
+| 2.6.13 | Outdated | `Outdated/2.6.13.patch.0\` |
+| 2.6.12 | Outdated | `Outdated/2.6.12.patch.0\` |
+| 2.6.8 | Outdated | `Outdated/2.6.8.patch.0\` |
+| 2.6.0-pre.43 | Outdated | `Outdated/2.6.0-pre.43.patch.0\` |
+| 2.6.0-pre.33 | Outdated | `Outdated/2.6.0-pre.33.patch.0\` |
+| 2.5.26 | Outdated | `Outdated/2.5.26\` |
+| 2.5.25 | Outdated | `Outdated/2.5.25\` |
 
+### Sonstiges (ohne feste Versionsnummer)
 
-Restores the full **Change Layout** menu in Cursor: Agent, Editor, Zen, Browser + toggles removed in newer versions.
+| Beschreibung | Dateien |
+|--------------|---------|
+| Generischer / älterer Patcher im Repo-Root (nicht an eine der Tabellenversionen gebunden) | `patcher.ps1`, `run-patcher.bat` |
 
-**Foreword:** This project restores layout options we miss. We ask Cursor for their understanding and hope these options will be available natively one day. Thank you for the IDE. 
+---
 
-**Updates:** Cursor is currently making massive changes to the editor; if you’re on the latest nightly, the patch may take a bit longer to support your version-we’ll catch up as soon as we can.
+## Hinweise
 
-## Features
+- **Immer den Patcher nutzen, der zu deiner exakten Cursor-Version passt** (siehe `product.json` → `version` oder *About*). Falsche Patch-Sätze führen zu „Targets not found“ oder kaputtem Workbench-JS.
+- **Outdated** heißt nur: es gibt neuere Patch-Ordner im Repo; der alte Ordner kann weiterhin stimmen, wenn deine Installation noch auf dieser Version steht.
+- Ab **2.7.0-pre.87+** enthält `buildContent` u. a. **`appendGlassWindowButton`** („Switch to Glass Window“) — die aktuellen Patch-Sätze behalten das am Ende bei.
 
-- **Presets**: Agent, Editor, Zen, Browser
-- **Toggles**: Agents, Chat, Editors, Panel, Sidebar, **Inline Diffs**, Status Bar
-- **Agent Sidebar** position (Left/Right)
-- **Settings** shortcut + **Add** btn
+---
 
-## Requirements
-
-- **Windows** (PowerShell)
-- **Cursor** installed (`%LOCALAPPDATA%\Programs\cursor` or `C:\Program Files\cursor`)
-- Patches in-place, no extra deps
-
-## Quick Start
-
-1. **Close Cursor** completely (check Task Manager)
-2. **Pick your Cursor version** – go into the matching folder (e.g. `2.7.0-pre.35.patch.0\`, `2.7.0-pre.27.patch.0\`, `2.6.13.patch.0\`, `2.6.8.patch.0\`, or `2.5.26\`)
-3. **Run** `run-patcher.bat` (or `.\patcher.ps1`)
-4. **Start Cursor**, gear icon top right → full layout menu
-
-Admin only needed for system install (`C:\Program Files\cursor`). User install (`%LOCALAPPDATA%\Programs\cursor`) runs without elevation.
-
-> **Version note**: Use the patcher from the folder that matches your Cursor version. If your version has no folder yet, an existing one may work, but it is untested.
-
-## Options
-
-```powershell
-# Restore original
-.\patcher.ps1 -Restore
-
-# Custom path
-.\patcher.ps1 -Path "D:\Tools\Cursor"
-```
-
-## Supported Versions
-
-
-| Version      | Folder                        | Status   |
-| ------------ | ----------------------------- | -------- |
-| 2.7.0-pre.35 | `2.7.0-pre.35.patch.0/`       | Tested ✅ |
-| 2.7.0-pre.27 | `2.7.0-pre.27.patch.0/`       | Tested ✅ |
-| 2.7.0-pre.18 | `2.7.0-pre.18.patch.0/`       | Tested ✅ |
-| 2.7.0-pre.16 | `2.7.0-pre.16.patch.0/`       | Tested ✅ |
-| 2.6.13       | `2.6.13.patch.0/`              | Tested ✅ |
-| 2.6.12       | `2.6.12.patch.0/`              | Tested ✅ |
-| 2.7.0-pre.1  | `2.7.0-pre.1.patch.0/`        | Tested ✅ |
-| 2.6.8        | `2.6.8.patch.0/`              | Tested ✅ |
-| 2.6.0-pre.43 | `2.6.0-pre.43.patch.0/`       | Tested ✅ |
-| 2.6.0-pre    | `2.6.0-pre.33.patch.0/`       | Tested ✅ |
-| 2.5.26       | `2.5.26/`                     | Tested ✅ |
-| 2.5.25       | `2.5.25/`                     | Tested ✅ |
-| …            | *add new version folders as needed* |          |
-
-
-## Possible Future Additions
-
-The layout menu could be extended with more quick toggles, e.g.:
-
-- **Minimap** – show/hide the editor minimap
-- **Breadcrumbs** – toggle breadcrumb navigation
-- **Sticky Scroll** – enable/disable sticky header in editor
-- **Word Wrap** – toggle line wrapping
-
-These would require matching services/commands and may vary per Cursor version.
-
-## Technical Details
-
-- **Target**: `resources\app\out\vs\workbench\workbench.desktop.main.js`
-- **Backup**: `workbench.desktop.main.js.backup.{timestamp}` auto-created
-- **Auto-updates**: Patcher offers to disable. Cursor re-downloads on checksum mismatch. Re-enable in settings or delete `update.mode` from `%APPDATA%\Cursor\User\settings.json`.
-- **"Corrupt" dialog**: Swapped for *"Layout Patcher active. Checksums modified. No reinstall needed. Leave a star on GitHub <3"*
-
-## After Updates
-
-Cursor updates overwrite the patch. Just run the patcher again.
-
-## Troubleshooting
-
-If problems occur: **reinstall Cursor** – this fixes most issues.
-
-## Contributing
-
-Contributions are welcome. Possible ways to help:
-
-- **Pull requests** – fixes, improvements, or support for new Cursor versions (e.g. new version folders with updated patch patterns).
-- **Port to macOS** – this patcher is Windows-only; a Mac port (e.g. shell script or small app) would be a great addition.
-- **Docs, issues, ideas** – open an issue to discuss or suggest something.
-
-Fork the repo, make your changes, and open a pull request. Please keep version-specific logic in the matching version folder.
-
-## Thanks
-
-Thank you to [Cursor](https://cursor.com) for the IDE — we really appreciate it. We hope you’ll understand this patcher; we’d love to see these layout options as native settings instead.
-
-## Disclaimer
-
-Use at your own risk. Not official Cursor.
+*Kurzfassung auch in `README.txt`.*
