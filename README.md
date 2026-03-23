@@ -18,7 +18,8 @@ Sorted with **newest first**. Folders under `Outdated\` are archived / supersede
 
 | Cursor version | Status | Folder |
 |----------------|--------|--------|
-| **2.7.0-pre.105** | Current | `2.7.0-pre.105.patch.0\` |
+| **2.7.0-pre.113** | Current | `2.7.0-pre.113.patch.0\` |
+| 2.7.0-pre.105 | Outdated | `Outdated/2.7.0-pre.105.patch.0\` |
 | 2.7.0-pre.87 | Outdated | `Outdated/2.7.0-pre.87.patch.0\` |
 | 2.7.0-pre.84 | Outdated | `Outdated/2.7.0-pre.84.patch.0\` |
 | 2.7.0-pre.78 | Outdated | `Outdated/2.7.0-pre.78.patch.0\` |
