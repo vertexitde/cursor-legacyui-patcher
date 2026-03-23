@@ -18,7 +18,8 @@ Sorted with **newest first**. Folders under `Outdated\` are archived / supersede
 
 | Cursor version | Status | Folder |
 |----------------|--------|--------|
-| **2.7.0-pre.113** | Current | `2.7.0-pre.113.patch.0\` |
+| **2.7.0-pre.119** | Current | `2.7.0-pre.119.patch.0\` |
+| 2.7.0-pre.113 | Outdated | `Outdated/2.7.0-pre.113.patch.0\` |
 | 2.7.0-pre.105 | Outdated | `Outdated/2.7.0-pre.105.patch.0\` |
 | 2.7.0-pre.87 | Outdated | `Outdated/2.7.0-pre.87.patch.0\` |
 | 2.7.0-pre.84 | Outdated | `Outdated/2.7.0-pre.84.patch.0\` |
@@ -63,7 +64,7 @@ Sorted with **newest first**. Folders under `Outdated\` are archived / supersede
 
 - **Use the patcher that matches your exact Cursor version** (see `product.json` → `version` or *About*). The wrong patch set may report “Targets not found” or break the workbench bundle.
 - **Outdated** only means a newer patch folder exists in this repo; an older folder is still valid if your app is still on that version.
-- From **2.7.0-pre.87** onward, stock `buildContent` includes **`appendGlassWindowButton`** (“Switch to Glass Window”). Current patch sets keep that call at the end of `buildContent`.
+- From **2.7.0-pre.87** onward, stock `buildContent` includes **`appendGlassWindowButton`** (e.g. “Open Glass Window” in newer builds). Current patch sets keep that call at the end of `buildContent`.
 
 ---
 
