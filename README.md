@@ -16,7 +16,7 @@ Patches `workbench.desktop.main.js` and updates checksums in `product.json` (and
 
 **Stable (release):** the current **release** version this repo tracks is **3.0.12** → use **`3.0.12.patch.0\`**.
 
-**Pre-release (3.1):** **3.1.0-pre.1** → use **`3.1.0-pre.1.patch.0\`** (i18n **`E()`** in this bundle; layout opener uses **`getAnchor:()=>O`**, not `$`).
+**Pre-release (3.1):** **3.1.0-pre.5** → use **`3.1.0-pre.5.patch.0\`** (i18n **`E()`**; opener **`getAnchor:()=>O`**, **`SR`/`TTS`**, **`M,x`** tail).
 
 **Nightly (2.7 Insiders):** the latest **2.7** nightly covered here is **2.7.0-pre.183** → use **`2.7.0-pre.183.patch.0\`**.
 
@@ -26,8 +26,9 @@ Sorted with **newest first** below. Folders under `Outdated\` are archived / sup
 
 | Cursor version | Channel | Status | Folder |
 |----------------|---------|--------|--------|
-| **3.1.0-pre.1** | Pre-release (3.1) | Current | `3.1.0-pre.1.patch.0\` |
+| **3.1.0-pre.5** | Pre-release (3.1) | Current | `3.1.0-pre.5.patch.0\` |
 | **3.0.12** | Release (stable) | Current | `3.0.12.patch.0\` |
+| 3.1.0-pre.1 | Pre-release (3.1) | Outdated | `Outdated/3.1.0-pre.1.patch.0\` |
 | **2.7.0-pre.183** | Nightly (2.7) | Current | `2.7.0-pre.183.patch.0\` |
 | 3.0.9 | Release | Outdated | `Outdated/3.0.9.patch.0\` |
 | 2.7.0-pre.180 | Nightly | Outdated | `Outdated/2.7.0-pre.180.patch.0\` |
@@ -87,9 +88,11 @@ Sorted with **newest first** below. Folders under `Outdated\` are archived / sup
 
 ## Notes
 
-- **Use the patcher that matches your exact Cursor version and channel** (see `product.json` → `version` or *About*): e.g. **3.0.12** (stable), **3.1.0-pre.1** (3.1 pre-release), **2.7.0-pre.183** (2.7 nightly). The wrong patch set may report “Targets not found” or break the workbench bundle.
+- **Use the patcher that matches your exact Cursor version and channel** (see `product.json` → `version` or *About*): e.g. **3.0.12** (stable), **3.1.0-pre.5** (3.1 pre-release), **2.7.0-pre.183** (2.7 nightly). The wrong patch set may report “Targets not found” or break the workbench bundle.
 - **Outdated** only means a newer patch folder exists in this repo for that line; an older folder is still valid if your app is still on that version.
 - From **2.7.0-pre.87** onward, stock `buildContent` includes **`appendGlassWindowButton`** (e.g. “Open Glass Window” in newer builds). Current patch sets keep that call at the end of `buildContent`.
+- **“Add layout” / custom layouts:** In recent builds the minified grid often gated the add tile on `n.type==="unsaved"`, which rarely matches, so the tile disappeared. Current **3.0.12** and **3.1.0-pre.5** patch sets show the add tile when the workbench is not applying a layout and the tile count is under the cap (`!isApplyingLayout && x < g`), similar to older UX (e.g. comparing against a side-by-side install like `cursor-old`).
+- **Updating the patcher after a git pull:** If you already patched the same Cursor version with an older copy of this repo, restore `workbench.desktop.main.js` from the backup next to it (or run `patcher.ps1 -Restore`), then run the patcher again so the latest replaces apply.
 
 ---
 
