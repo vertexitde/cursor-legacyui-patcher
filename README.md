@@ -16,7 +16,7 @@ Patches `workbench.desktop.main.js` and updates checksums in `product.json` (and
 
 **Stable (release):** the current **release** version this repo tracks is **3.0.12** → use **`3.0.12.patch.0\`**.
 
-**Pre-release (3.1):** **3.1.0-pre.11** → use **`3.1.0-pre.11.patch.0\`** (i18n **`E()`**; layouts **`yIS`**; opener **`getAnchor:()=>O`**, **`_R`/`kIS`**, **`M,x`** tail; settings **`X2`**, **`E(3069)`**).
+**Pre-release (3.1):** **3.1.0-pre.12** → use **`3.1.0-pre.12.patch.0\`** (i18n **`E()`**; layouts **`yRS`**; layout enum **`tF`**; opener **`getAnchor:()=>O`**, **`wR`/`kRS`**, **`M,x`** tail; settings **`X2`**, **`E(3069)`**).
 
 **Nightly (2.7 Insiders):** the latest **2.7** nightly covered here is **2.7.0-pre.183** → use **`2.7.0-pre.183.patch.0\`**.
 
@@ -26,7 +26,8 @@ Sorted with **newest first** below. Folders under `Outdated\` are archived / sup
 
 | Cursor version | Channel | Status | Folder |
 |----------------|---------|--------|--------|
-| **3.1.0-pre.11** | Pre-release (3.1) | Current | `3.1.0-pre.11.patch.0\` |
+| **3.1.0-pre.12** | Pre-release (3.1) | Current | `3.1.0-pre.12.patch.0\` |
+| 3.1.0-pre.11 | Pre-release (3.1) | Outdated | `Outdated/3.1.0-pre.11.patch.0\` |
 | 3.1.0-pre.5 | Pre-release (3.1) | Outdated | `Outdated/3.1.0-pre.5.patch.0\` |
 | **3.0.12** | Release (stable) | Current | `3.0.12.patch.0\` |
 | 3.1.0-pre.1 | Pre-release (3.1) | Outdated | `Outdated/3.1.0-pre.1.patch.0\` |
@@ -89,11 +90,11 @@ Sorted with **newest first** below. Folders under `Outdated\` are archived / sup
 
 ## Notes
 
-- **Use the patcher that matches your exact Cursor version and channel** (see `product.json` → `version` or *About*): e.g. **3.0.12** (stable), **3.1.0-pre.11** (3.1 pre-release), **2.7.0-pre.183** (2.7 nightly). The wrong patch set may report “Targets not found” or break the workbench bundle.
+- **Use the patcher that matches your exact Cursor version and channel** (see `product.json` → `version` or *About*): e.g. **3.0.12** (stable), **3.1.0-pre.12** (3.1 pre-release), **2.7.0-pre.183** (2.7 nightly). The wrong patch set may report “Targets not found” or break the workbench bundle.
 - **Outdated** only means a newer patch folder exists in this repo for that line; an older folder is still valid if your app is still on that version.
 - From **2.7.0-pre.87** onward, stock `buildContent` includes **`appendGlassWindowButton`** (e.g. “Open Glass Window” in newer builds). Current patch sets keep that call at the end of `buildContent`.
-- **“Add layout” / custom layouts:** In recent builds the minified grid often gated the add tile on `n.type==="unsaved"`, which rarely matches, so the tile disappeared. Current **3.0.12** and **3.1.0-pre.11** patch sets show the add tile when the workbench is not applying a layout and the tile count is under the cap (`!isApplyingLayout && x < g`), similar to older UX (e.g. comparing against a side-by-side install like `cursor-old`).
-- **3.1 pre-release and `nls.messages.json`:** The `E(n)` indices are **not stable** across Cursor versions. A reference install (e.g. `C:\Program Files\cursor-old`) can have completely different strings at the same index than **3.1.0-pre.11**. For pre.11, Zen/Browser preset **labels** must use **`E(3093)`** / **`E(3094)`** (Layout Zen / Browser); reusing older patch IDs such as **`E(3212)`** / **`E(3092)`** in pre.11 shows wrong tiles (“Tab Bar”, “Layout • Right”) and breaks expectations. After a label fix in the repo, **restore** the workbench backup and run the patcher again if you already applied an older pre.11 patch.
+- **“Add layout” / custom layouts:** In recent builds the minified grid often gated the add tile on `n.type==="unsaved"`, which rarely matches, so the tile disappeared. Current **3.0.12** and **3.1.0-pre.12** patch sets show the add tile when the workbench is not applying a layout and the tile count is under the cap (`!isApplyingLayout && x < g`), similar to older UX (e.g. comparing against a side-by-side install like `cursor-old`).
+- **3.1 pre-release and `nls.messages.json`:** The `E(n)` indices are **not stable** across Cursor versions. A reference install (e.g. `C:\Program Files\cursor-old`) can have completely different strings at the same index than **3.1.0-pre.12**. The Zen preset tile uses the short label **`"Zen"`** (not **`E(3093)`**, which reads as “Layout • Zen” and looks odd next to Agent/Editor). Browser still uses **`E(3094)`** (“Browser”). Do not reuse **`E(3212)`** / **`E(3092)`** for Zen/Browser—they map to “Tab Bar” / “Layout • Right” in recent 3.1 builds. Minified names also drift between builds (e.g. pre.11 **`yIS`/`eF`/`_R`/`kIS`** vs pre.12 **`yRS`/`tF`/`wR`/`kRS`**); use the patch folder that matches your exact app version. After any patcher update, **restore** the workbench backup and re-run if you had applied an older patch set.
 - **Updating the patcher after a git pull:** If you already patched the same Cursor version with an older copy of this repo, restore `workbench.desktop.main.js` from the backup next to it (or run `patcher.ps1 -Restore`), then run the patcher again so the latest replaces apply.
 
 ---
