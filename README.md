@@ -1,7 +1,7 @@
 # Cursor Layout Patcher
 
 Restores the full **Change Layout** menu (Agent, Editor, Zen, Browser, toggles, and related options).  
-Patches `workbench.desktop.main.js` and updates checksums in `product.json`. The **3.2.0-pre.19** patch set does **not** modify `nls.messages.json`; it **no-ops the checksum-fail notification** in the workbench bundle so the “corrupt install” toast does not appear (checksums in `product.json` are still updated). Older patch sets may still patch `nls.messages.json` instead.
+Patches `workbench.desktop.main.js` and updates checksums in `product.json`. The **3.2.0-pre.22** patch set does **not** modify `nls.messages.json`; it **no-ops the checksum-fail notification** in the workbench bundle so the “corrupt install” toast does not appear (checksums in `product.json` are still updated). Older patch sets may still patch `nls.messages.json` instead.
 
 ## Quick info
 
@@ -16,7 +16,7 @@ Patches `workbench.desktop.main.js` and updates checksums in `product.json`. The
 
 **Stable (release):** the current **release** version this repo tracks is **3.0.12** → use **`3.0.12.patch.0\`**.
 
-**Pre-release (3.2):** **3.2.0-pre.19** → use **`3.2.0-pre.19.patch.0\`** (i18n **`E()`**; layouts **`D8S`**; clear **`Bh`**; enum **`sF`**; StorageScope **`mi`**; opener **`LR`/`B8S`**, **`N,x`** tail; settings **`oB`**, footer **`E(2939)`**; Agent/Editor **`E(2942)`/`E(2943)`**; Browser **`E(2964)`**).
+**Pre-release (3.2):** **3.2.0-pre.22** → use **`3.2.0-pre.22.patch.0\`** (i18n **`E()`**; layouts **`gJS`**; clear **`Nh`**; enum **`oF`**; StorageScope **`mi`**; opener **`LR`/`wJS`**, **`N,x`** tail; settings **`oB`**, footer **`E(2939)`**; Agent/Editor **`E(2942)`/`E(2943)`**; Browser **`E(2964)`**; checksum toast code **`E(14316)`/`rl`/`L1`**).
 
 **Pre-release (3.1, outdated in repo):** **3.1.0-pre.25** → **`Outdated/3.1.0-pre.25.patch.0\`** (layouts **`cFS`**, **`Mh`**, **`ZB`**, **`wi`**, **`AR`/`pFS`**, **`nB`**).
 
@@ -28,7 +28,8 @@ Sorted with **newest first** below. Folders under `Outdated\` are archived / sup
 
 | Cursor version | Channel | Status | Folder |
 |----------------|---------|--------|--------|
-| **3.2.0-pre.19** | Pre-release (3.2) | Current | `3.2.0-pre.19.patch.0\` |
+| **3.2.0-pre.22** | Pre-release (3.2) | Current | `3.2.0-pre.22.patch.0\` |
+| 3.2.0-pre.19 | Pre-release (3.2) | Outdated | `Outdated/3.2.0-pre.19.patch.0\` |
 | 3.2.0-pre.14 | Pre-release (3.2) | Outdated | `Outdated/3.2.0-pre.14.patch.0\` |
 | 3.2.0-pre.11 | Pre-release (3.2) | Outdated | `Outdated/3.2.0-pre.11.patch.0\` |
 | 3.2.0-pre.6 | Pre-release (3.2) | Outdated | `Outdated/3.2.0-pre.6.patch.0\` |
@@ -98,11 +99,11 @@ Sorted with **newest first** below. Folders under `Outdated\` are archived / sup
 
 ## Notes
 
-- **Use the patcher that matches your exact Cursor version and channel** (see `product.json` → `version` or *About*): e.g. **3.0.12** (stable), **3.2.0-pre.19** (3.2 pre-release), **2.7.0-pre.183** (2.7 nightly). The wrong patch set may report “Targets not found” or break the workbench bundle.
+- **Use the patcher that matches your exact Cursor version and channel** (see `product.json` → `version` or *About*): e.g. **3.0.12** (stable), **3.2.0-pre.22** (3.2 pre-release), **2.7.0-pre.183** (2.7 nightly). The wrong patch set may report “Targets not found” or break the workbench bundle.
 - **Outdated** only means a newer patch folder exists in this repo for that line; an older folder is still valid if your app is still on that version.
 - From **2.7.0-pre.87** onward, stock `buildContent` includes **`appendGlassWindowButton`** (e.g. “Open Glass Window” in newer builds). Current patch sets keep that call at the end of `buildContent`.
-- **“Add layout” / custom layouts:** In recent builds the minified grid often gated the add tile on `n.type==="unsaved"`, which rarely matches, so the tile disappeared. Current **3.0.12** and **3.2.0-pre.19** patch sets show the add tile when the workbench is not applying a layout and the tile count is under the cap (`!isApplyingLayout && x < g`), similar to older UX (e.g. comparing against a side-by-side install like `cursor-old`).
-- **Pre-release, `nls.messages.json`, and `cursor-old`:** The `E(n)` indices are **not stable** across versions. On **`cursor-old`**, the same index often means something different—always use the patch set built for **your** `product.json` version. In **3.2.0-pre.19**, Agent/Editor **`E(2942)`/`E(2943)`**, Zen **`"Zen"`**, Browser **`E(2964)`**, footer **`E(2939)`** (stock “Settings” → patched “Cursor Settings” + keybinding). **3.2** line: **pre.6** **`y5S`/`sF`/`k5S`**, **pre.11** **`RUS`/`rF`/`MUS`**, **pre.14** **`GUS`/`rF`/`YUS`**, **pre.19** **`D8S`/`Bh`/`sF`/`mi`/`LR`/`B8S`/`oB`**. Names also differ from **3.1.0-pre.25** (**`cFS`**, **`Mh`**, **`ZB`**, **`wi`**, **`AR`/`pFS`**, **`nB`**). After any patcher update, **restore** the workbench backup and re-run if you had applied an older patch set.
+- **“Add layout” / custom layouts:** In recent builds the minified grid often gated the add tile on `n.type==="unsaved"`, which rarely matches, so the tile disappeared. Current **3.0.12** and **3.2.0-pre.22** patch sets show the add tile when the workbench is not applying a layout and the tile count is under the cap (`!isApplyingLayout && x < g`), similar to older UX (e.g. comparing against a side-by-side install like `cursor-old`).
+- **Pre-release, `nls.messages.json`, and `cursor-old`:** The `E(n)` indices are **not stable** across versions. On **`cursor-old`**, the same index often means something different—always use the patch set built for **your** `product.json` version. In **3.2.0-pre.22**, Agent/Editor **`E(2942)`/`E(2943)`**, Zen **`"Zen"`**, Browser **`E(2964)`**, footer **`E(2939)`** (stock “Settings” → patched “Cursor Settings” + keybinding). **3.2** line: **pre.6** **`y5S`/`sF`/`k5S`**, **pre.11** **`RUS`/`rF`/`MUS`**, **pre.14** **`GUS`/`rF`/`YUS`**, **pre.19** **`D8S`/`Bh`/`sF`/`mi`/`LR`/`B8S`/`oB`**, **pre.22** **`gJS`/`Nh`/`oF`/`mi`/`LR`/`wJS`/`oB`**. Names also differ from **3.1.0-pre.25** (**`cFS`**, **`Mh`**, **`ZB`**, **`wi`**, **`AR`/`pFS`**, **`nB`**). After any patcher update, **restore** the workbench backup and re-run if you had applied an older patch set.
 - **Updating the patcher after a git pull:** If you already patched the same Cursor version with an older copy of this repo, restore `workbench.desktop.main.js` from the backup next to it (or run `patcher.ps1 -Restore`), then run the patcher again so the latest replaces apply.
 
 ---
